@@ -6,72 +6,77 @@
 	<title>软考在线</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<script src="js/jquery.js" type="text/javascript"></script>
-	<script type="text/javascript">
+ 	<script type="text/javascript">
 		$(function(){
-			//显示晋级进度
-			var grade_input = $("#grade_input").val();
-			if(grade_input>=0 && grade_input<800){	//按积分多少显示晋级进度
-				var per = grade_input*316/800;
-				$("#steps_bg0").css("background","url(images/steps_1.png) no-repeat");
-				$("#steps_step").css("width",per);
-				$("#span_int").html((grade_input/8)+"%");
-			}else if(grade_input >= 800){	//若积分超过800
-				$("#steps_bg0").css("background","url(images/steps_2.png) no-repeat");
-				$("#steps_step").css("width","316");
-			}
+		
 			
-			
-			//倒计时模块
-			var zsj=$("span[id=show-time]").html();//获取倒计时初始秒数
-			var yx=window.setInterval(function() {	//setInterval()方法可按照指定的周期（以毫秒计）来调用函数或计算表达式
-				var timeCounter = $("span[id=show-time]").html();	//获取页面数值
-				var updateTime = eval(timeCounter)- eval(1);	//对数值进行-1
-				$("span[id=show-time]").html(updateTime);	//将新数值写回页面
-				if(updateTime <10){	//若时间小于十秒则时间字体改为红色
-					$("#seconds").css("color","#F00");
+			$(function(){
+				//显示晋级进度
+				var grade_input = $("#grade_input").val();
+				if(grade_input>=0 && grade_input<800){	//按积分多少显示晋级进度
+					var per = grade_input*316/800;
+					$("#steps_bg0").css("background","url(images/steps_1.png) no-repeat");
+					$("#steps_step").css("width",per);
+					$("#span_int").html((grade_input/8)+"%");
+				}else if(grade_input >= 800){	//若积分超过800
+					$("#steps_bg0").css("background","url(images/steps_2.png) no-repeat");
+					$("#steps_step").css("width","316");
 				}
-				if(updateTime <=0){	//若时间结束
-					sendAnswer(0,$("#question_id").val());	//发送答案
-					hrBox();	//超时后 结束倒计时等操作..
-				}}, 1000);
-			$("#Last").animate({width:0},zsj*1000);	//改变 "div" 元素的宽度
-			
-			//点击答题后
-			var first_answer = true;		//是否第一次答题标记
-			$('.answers').click(function(){	//选项被点击时执行
-				var answer = $(this).val();	//获取选中项的值
-				var question_id = $("#question_id").val();	//获取当然题目id
-				if(first_answer == true){	//若是第一次回答则发送答案
-					sendAnswer(answer,question_id);	//判断答案是否正确
-				}else{alert("您已经回答过了！");}
-				first_answer = false;	
-				hrBox2();		//回答问题之后 结束倒计时等操作..
+				
+				
+				//倒计时模块
+				var zsj=$("span[id=show-time]").html();//获取倒计时初始秒数
+				var yx=window.setInterval(function() {	//setInterval()方法可按照指定的周期（以毫秒计）来调用函数或计算表达式
+					var timeCounter = $("span[id=show-time]").html();	//获取页面数值
+					var updateTime = eval(timeCounter)- eval(1);	//对数值进行-1
+					$("span[id=show-time]").html(updateTime);	//将新数值写回页面
+					if(updateTime <10){	//若时间小于十秒则时间字体改为红色
+						$("#seconds").css("color","#F00");
+					}
+					if(updateTime <=0){	//若时间结束
+						sendAnswer(0,$("#question_id").val());	//发送答案
+						hrBox();	//超时后 结束倒计时等操作..
+					}}, 1000);
+				$("#Last").animate({width:0},zsj*1000);	//改变 "div" 元素的宽度
+				
+				//点击答题后
+				var first_answer = true;		//是否第一次答题标记
+				$('.answers').click(function(){	//选项被点击时执行
+					var answer = $(this).val();	//获取选中项的值
+					var question_id = $("#question_id").val();	//获取当然题目id
+					if(first_answer == true){	//若是第一次回答则发送答案
+						sendAnswer(answer,question_id);	//判断答案是否正确
+					}else{alert("您已经回答过了！");}
+					first_answer = false;	
+					hrBox2();		//回答问题之后 结束倒计时等操作..
+				});
+
+				//超时后 结束倒计时等操作..
+				var hrBox = function(){
+					clearInterval(yx);	//结束倒计时:clearInterval() 方法可取消由 setInterval() 设置的 timeout
+					$("#timeup").fadeIn();	//使用淡入效果来显示超时模块
+					$("#djscon").hide();	//隐藏倒计时模块
+					$("#jxdt_cn").fadeIn();	//显示分数结果模块
+				};
+
+				//回答问题之后 结束倒计时等操作..
+				var hrBox2 = function(){
+					clearInterval(yx);	//结束倒计时
+					$("#djscon").hide();	//隐藏倒计时模块
+					$("#jxdt_cn").fadeIn();	//显示分数结果模块
+				};
+				
+				/* 设置超时后锁屏范围 */
+				var tgao01=$(".cse_tmlb").outerHeight()-90;
+				$("#timeup").css("height",tgao01);
+				$("#timeup .dbyy").css("height",tgao01);
+				$("#timeup .wz").css("height",tgao01).css("line-height",tgao01+"px");
+
+				
+
 			});
 
-			//超时后 结束倒计时等操作..
-			var hrBox = function(){
-				clearInterval(yx);	//结束倒计时:clearInterval() 方法可取消由 setInterval() 设置的 timeout
-				$("#timeup").fadeIn();	//使用淡入效果来显示超时模块
-				$("#djscon").hide();	//隐藏倒计时模块
-				$("#jxdt_cn").fadeIn();	//显示分数结果模块
-			};
-
-			//回答问题之后 结束倒计时等操作..
-			var hrBox2 = function(){
-				clearInterval(yx);	//结束倒计时
-				$("#djscon").hide();	//隐藏倒计时模块
-				$("#jxdt_cn").fadeIn();	//显示分数结果模块
-			};
-			
-			/* 设置超时后锁屏范围 */
-			var tgao01=$(".cse_tmlb").outerHeight()-90;
-			$("#timeup").css("height",tgao01);
-			$("#timeup .dbyy").css("height",tgao01);
-			$("#timeup .wz").css("height",tgao01).css("line-height",tgao01+"px");
-
-			
-
-		});
+		
 
 		//判定答案(超时或问题已经回答时执行ajax请求)
 		function sendAnswer(answer,question_id) {
