@@ -7,21 +7,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<script src="js/jquery.js" type="text/javascript"></script>
  	<script type="text/javascript">
-		$(function(){
+		
 		
 			
 			$(function(){
-				//显示晋级进度
-				var grade_input = $("#grade_input").val();
-				if(grade_input>=0 && grade_input<800){	//按积分多少显示晋级进度
-					var per = grade_input*316/800;
-					$("#steps_bg0").css("background","url(images/steps_1.png) no-repeat");
-					$("#steps_step").css("width",per);
-					$("#span_int").html((grade_input/8)+"%");
-				}else if(grade_input >= 800){	//若积分超过800
-					$("#steps_bg0").css("background","url(images/steps_2.png) no-repeat");
-					$("#steps_step").css("width","316");
-				}
+				
 				
 				
 				//倒计时模块
@@ -37,7 +27,7 @@
 						sendAnswer(0,$("#question_id").val());	//发送答案
 						hrBox();	//超时后 结束倒计时等操作..
 					}}, 1000);
-				$("#Last").animate({width:0},zsj*1000);	//改变 "div" 元素的宽度
+				
 				
 				//点击答题后
 				var first_answer = true;		//是否第一次答题标记
@@ -51,13 +41,6 @@
 					hrBox2();		//回答问题之后 结束倒计时等操作..
 				});
 
-				//超时后 结束倒计时等操作..
-				var hrBox = function(){
-					clearInterval(yx);	//结束倒计时:clearInterval() 方法可取消由 setInterval() 设置的 timeout
-					$("#timeup").fadeIn();	//使用淡入效果来显示超时模块
-					$("#djscon").hide();	//隐藏倒计时模块
-					$("#jxdt_cn").fadeIn();	//显示分数结果模块
-				};
 
 				//回答问题之后 结束倒计时等操作..
 				var hrBox2 = function(){
@@ -66,12 +49,7 @@
 					$("#jxdt_cn").fadeIn();	//显示分数结果模块
 				};
 				
-				/* 设置超时后锁屏范围 */
-				var tgao01=$(".cse_tmlb").outerHeight()-90;
-				$("#timeup").css("height",tgao01);
-				$("#timeup .dbyy").css("height",tgao01);
-				$("#timeup .wz").css("height",tgao01).css("line-height",tgao01+"px");
-
+				
 				
 
 			});
