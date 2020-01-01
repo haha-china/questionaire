@@ -22,7 +22,7 @@
 						<div class="ucb_top">
 							<h2 class="uc_nm">
 								<a href="home.action">${user.username}</a>&nbsp;
-								<a href="home.action"><img id="dj" src="images/dj1.gif" /></a>
+								<img id="dj" src="images/dj1.gif" />
 							</h2>
                         </div>
 						<br/>
@@ -45,63 +45,8 @@
 
 							<div class="cz01 clearfix" id="panel1" style="display: block;">
 								<div class="uc_whddcs">
-									<div class="ucwhh_top"><h2> 我的挑战 </h2></div>
-									<div class="ucwhh_nr">
-										<div class="ucnrw">
-											<table width="100%">
-												<tr>
-													<td width="30%" style="height:20px;">BEGINNER(0-299)</td>
-													<td width="70%">
-														<s:iterator value="request.beginner">
-															<a href="intro.action?id=<s:property value="category.id"/>">
-																<s:property value="category.name"/></a>
-																<font color="gray">(<s:property value="grade"/>)</font>&nbsp;&nbsp;
-														</s:iterator>
-													</td>
-												</tr>
-												<tr>
-													<td width="18%" style="height:20px;">FAMILIAR(300-449)</td>
-													<td width="82%">
-														<s:iterator value="request.familiar">
-															<a href="intro.action?id=<s:property value="category.id"/>">
-																<s:property value="category.name"/></a>
-																<font color="gray">(<s:property value="grade"/>)</font>&nbsp;&nbsp;
-														</s:iterator>
-													</td>
-												</tr>
-												<tr>
-													<td width="18%" style="height:20px;">PROFICIENT(450-699)</td>
-													<td width="82%">
-														<s:iterator value="request.proficient">
-															<a href="intro.action?id=<s:property value="category.id"/>">
-																<s:property value="category.name"/></a>
-																<font color="gray">(<s:property value="grade"/>)</font>&nbsp;&nbsp;
-														</s:iterator>
-													</td>
-												</tr>
-												<tr>
-													<td width="18%" style="height:20px;">EXPERT(700-779)</td>
-													<td width="82%">
-														<s:iterator value="request.expert">
-															<a href="intro.action?id=<s:property value="category.id"/>">
-																<s:property value="category.name"/></a>
-																<font color="gray">(<s:property value="grade"/>)</font>&nbsp;&nbsp;
-														</s:iterator>
-													</td>
-												</tr>
-												<tr>
-													<td width="18%" style="height:20px;">MASTER(780-800)</td>
-													<td width="82%">
-														<s:iterator value="request.master">
-															<a href="intro.action?id=<s:property value="category.id"/>">
-																<s:property value="category.name"/></a>
-																<font color="gray">(<s:property value="grade"/>)</font>&nbsp;&nbsp;
-														</s:iterator>
-													</td>
-												</tr>
-											</table>
-										</div>
-									</div>
+									<div class="ucwhh_top"><h2> 个人名片 </h2></div>
+									<img id="333" width="50" height="50" src="images/tx.gif" />
 								</div>
 							</div>
 

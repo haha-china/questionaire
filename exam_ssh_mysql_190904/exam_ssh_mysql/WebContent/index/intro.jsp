@@ -61,7 +61,7 @@
 								<p><font size="4" color="blue">技能介绍：</font>${category.intro}</p>
 								<div class="anniuc">
 									<a class="cs_ksbut" href="answer.action?category_id=${category.id}">开始挑战</a>
-									<a class="uc_xgtx" href="rank.action?category_id=${category.id}" target="_blank">查看排行榜</a>
+								<!--  	<a class="uc_xgtx" href="rank.action?category_id=${category.id}" target="_blank">查看排行榜</a> -->
 								</div>
 							</div>
 						</div>

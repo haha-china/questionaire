@@ -230,9 +230,7 @@
 						</h2>
 					</div>
 					
-						<h3 id="rank_href">
-							<a href="rank.action?category_id=${question.category.id}" target="_blank">查看榜单</a>
-						</h3>
+						
 				</div>
 
 				<div class="dt_plun clearfix" style="border-top:none;">
